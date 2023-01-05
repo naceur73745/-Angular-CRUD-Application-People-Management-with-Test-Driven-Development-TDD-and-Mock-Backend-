@@ -6,77 +6,98 @@
 <!-- * * * * * * * * * Delete the template below * * * * * * * * * * -->
 <!-- * * * * * * * to get started with your project! * * * * * * * * -->
 <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
+<html>
 
-<nav class="navbar navbar-lighter bg-primary ">
-  <div class="container-fluid">
-    <h1>PERSON Manager</h1>
-    <div class="d-flex">
-      Naceur PersonManagerApp
+
+<body style="background: #23a6d5 ">
+    <nav   class="navbar navbar-dark bg-dark" style="background-color: #e3f2fd;">
+      <div class="container-fluid">
+        <h1 style="color:red">PERSONMANAGER_APP </h1>
+        <div class="d-flex">
+          <button type="button" (click)="onAddclick()" style="color: black"  class="btn btn-info" data-bs-toggle="modal" data-bs-target="#exampleModalCenter"> Person_Erstellen
+          </button>
+
+        </div>
+      </div>
+    </nav>
+
+    <div style="background:#03fcd7">
+      <table class="table">
+        <thead>
+        <tr>
+          <th scope="col"> id</th>
+          <th scope="col"> Vorname</th>
+          <th scope="col"> Nachname</th>
+          <th scope="col"> Email </th>
+          <th scope="col"> Action </th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let row of person">
+          <td>  {{row.id}}  </td>
+          <td>  {{row.vorName}}  </td>
+          <td>  {{row.nachName}}  </td>
+          <td>  {{row.Email}}  </td>
+
+          <td>
+            <button (click)="deleteSubscribedperson(row)" class="btn btn-danger"> Person_Loeschen</button>
+            <button (click)="editSubscribedperson(row)" class="btn btn-info" type="button" data-bs-toggle="modal"
+                    data-bs-target="#exampleModalCenter"> Bearbeiten
+            </button>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+
+
+      <!-- Modal -->
+      <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+           aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLongTitle">PERSONMANAGER_APP</h5>
+              <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <form [formGroup]="formValue">
+                <div class="form-group">
+                  <label for="formGroupExampleInput2">id </label>
+                  <input  type="text" formControlName="id" class="form-control" id="formGroupExampleInput2"
+                         placeholder="id eingeben ">
+                </div>
+                <div class="form-group">
+                  <label for="formGroupExampleInput">Vorname </label>
+                  <input type="text" formControlName="vorName" class="form-control" id="formGroupExampleInput"
+                         placeholder="Vorname eingeben">
+                </div>
+                <div class="form-group">
+                  <label for="formGroupExampleInput2">Nachname </label>
+                  <input type="text" formControlName="nachName" class="form-control" id="formGroupExampleInput2"
+                         placeholder="Nachname eingeben ">
+                </div>
+                <div class="form-group">
+                  <label for="formGroupExampleInput2">Email</label>
+                  <input type="email" formControlName="Email" class="form-control" id="formGroupExampleInput2"
+                         placeholder="Email eingeben  ">
+                </div>
+              </form>
+            </div>
+            <div class="modal-footer">
+              <button type="button" id="close" class="btn btn-secondary" data-bs-dismiss="modal">Schliesssen </button>
+              <button *ngIf="!beingEdited" type="button" (click)="CreatePerson()" class="btn btn-primary">Person_Erstellen</button>
+              <button *ngIf="beingEdited" type="button" (click)="UpdatePersonInfo()" class="btn btn-primary">Bearbeiten</button>
+
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
-  </div>
-</nav>
-<table class="table">
-  <thead>
-  <tr>
-    <th scope="col"> id  </th>
-    <th scope="col"> FirstName  </th>
-    <th scope="col"> LastName  </th>
-    <th scope="col"> Age   </th>
-    <th scope="col"> service   </th>
-  </tr>
-  </thead>
-  <tbody>
-  <tr *ngFor="let row of person">
-    <td>  {{row.id}}  </td>
-    <td>  {{row.FirstName}}  </td>
-    <td>  {{row.LastName}}  </td>
-    <td>  {{row.age}}  </td>
+  </body>
+</html>
 
-    <td>
-      <button  (click)="CreatePerson()" type="button"    class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModalCenter"> add  </button>
-      <button (click)="deleteSubscribedperson(row)" class="btn btn-danger"> delete  </button>
-      <button (click)="editSubscribedperson(row)" class="btn btn-info" type="button"  data-bs-toggle="modal" data-bs-target="#exampleModalCenter"> edit  </button>
-    </td>
-  </tr>
-  </tbody>
-</table>
 
-<!-- Modal -->
-<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLongTitle">Person Manager</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <form [formGroup]="formValue">
-          <div class="form-group">
-            <label for="formGroupExampleInput">FirstName </label>
-            <input type="text" formControlName="FirstName" class="form-control" id="formGroupExampleInput" placeholder="Enter y Name">
-          </div>
-          <div class="form-group">
-            <label for="formGroupExampleInput2">LastName </label>
-            <input type="text" formControlName="LastName" class="form-control" id="formGroupExampleInput2" placeholder="Enter y Last Name">
-          </div>
-          <div class="form-group">
-            <label for="formGroupExampleInput2">age</label>
-            <input type="text" formControlName="age" class="form-control" id="formGroupExampleInput2" placeholder="Enter y age ">
-          </div>
-        </form>
-      </div>
-      <div class="modal-footer">
-        <button type="button"  id="close"  class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" (click)="CreatePerson()" class="btn btn-primary">Create Person </button>
-        <button type="button" (click)="UpdatePersonInfo()" class="btn btn-primary">Update </button>
-
-      </div>
-      </div>
-    </div>
-  </div>
-
-    
 
 

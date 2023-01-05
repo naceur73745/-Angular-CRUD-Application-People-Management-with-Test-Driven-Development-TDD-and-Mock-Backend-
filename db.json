@@ -1,18 +1,5 @@
 {
-  "posts": [
-    {
-      "id": "iYuVnJd",
-      "FirstName": "was",
-      "LastName": "haj jhg",
-      "age": "24"
-    },
-    {
-      "id": "QlBvXCr",
-      "FirstName": "mariem",
-      "LastName": "ben marina ",
-      "age": "45"
-    }
-  ],
+  "posts": [],
   "comments": [],
   "profile": {
     "name": "typicode"

@@ -11,6 +11,7 @@ body {
   }
   50% {
     background-position: 100% 50%;
+    background-color: #e73c7e;
   }
   100% {
     background-position: 0% 50%;
