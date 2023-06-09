@@ -1,3 +1,13 @@
+I have developed an Angular (2+) CRUD application for managing people. The application allows users to create, list, display details, edit, and delete individuals. Each person is characterized by attributes such as ID, first name, last name, and email address.
+
+For the backend service, I implemented a mock/fake version. Although it doesn't interact with a real backend, the requests and responses are provided in JSON format to simulate the expected behavior.
+
+Throughout the development process, I followed a Test-Driven Development (TDD) approach. This involved writing tests before implementing each feature and ensuring they passed successfully. By adhering to TDD principles, I aimed to create a reliable and maintainable codebase.
+
+I documented my development steps, providing detailed explanations for the decisions I made along the way. This documentation serves as a reference for future maintenance and improvement of the application.
+
+Regarding the user interface, I kept it simple and focused on functionality. A basic list is used to display the people, and there is no need for styling, filtering, or sorting in this version of the application. The primary emphasis was on implementing the CRUD operations effectively and ensuring a smooth user experience.
+
 # ManageBuilder
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.0.4.
